@@ -49,6 +49,7 @@ prevButton.addEventListener("click", (e) => {
   if (currentPage > 1) {
     currentPage--;
     displayPage(currentPage);
+    updatePagination();
   }
 });
 nextButton.addEventListener("click", (e) => {
@@ -56,7 +57,21 @@ nextButton.addEventListener("click", (e) => {
   if (currentPage < totalPages) {
     currentPage++;
     displayPage(currentPage);
+    updatePagination();
   }
 });
 
+pageLinks.forEach((link) => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    const page = parseInt(link.getAttribute("data-page"));
+    if (page !== currentPage) {
+      currentPage = page;
+      displayPage(currentPage);
+      updatePagination();
+    }
+  });
+});
+
 displayPage(currentPage);
+updatePagination();
