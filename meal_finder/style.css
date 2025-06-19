@@ -18,6 +18,7 @@
 }
 
 .hamburger {
+  display: none;
   padding: 10px;
   font-size: 24px;
   font-weight: 500;
@@ -110,6 +111,51 @@ li:hover {
   color: #0077ff;
 }
 
+.mealsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.meal {
+  cursor: pointer;
+  position: relative;
+  height: 180px;
+  width: 180px;
+  text-align: center;
+}
+
+.meal img {
+  width: 100%;
+  height: 100%;
+  border: 4px #fff solid;
+  border-radius: 2px;
+}
+
+.meal-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease-in;
+  opacity: 0;
+}
+
+.meal-info h3 {
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.meal:hover .meal-info {
+  opacity: 1;
+}
+
 /* Responsive behavior */
 
 @media (max-width: 875px) {
@@ -136,13 +182,17 @@ li:hover {
 
 @media screen and (max-width: 768px) {
   .menu {
-    display: block;
+    display: none;
     position: absolute;
     top: 60px;
     left: 0;
     width: 100%;
     background-color: #e9e8e86c;
     box-shadow: #cac4c4fc;
+  }
+
+  .menu.active {
+    display: block;
   }
 
   .menu ul {
